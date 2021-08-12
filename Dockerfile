@@ -10,11 +10,12 @@ COPY requirements.txt ./
 COPY data/models/export.pkl ./data/models/
 COPY imgs/Beagle_harrier.jpeg ./imgs
 COPY start.sh ./
+COPY server.py ./
 
 RUN pip install -r requirements.txt
 RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "vim"]
 
 
-CMD ["python"]
-ENTRYPOINT ["start.sh"]
+#CMD ["python"]
+ENTRYPOINT sh start.sh

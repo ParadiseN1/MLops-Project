@@ -1,12 +1,11 @@
 from fastapi import FastAPI, Request, File, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-
+import uvicorn
 from inference import predict
 import os
 app = FastAPI()
 
-list_of_usernames = list()
 templates = Jinja2Templates(directory="templates")
 UPLOAD_FOLDER = 'imgs/'
 
@@ -30,3 +29,4 @@ async def handle_form(request: Request, file: UploadFile = File(...)):
                                                      "image_loc": file_location,
                                                      "prediction": prediction,
                                                      "proba": proba})
+
